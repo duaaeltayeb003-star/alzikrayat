@@ -87,6 +87,8 @@ class AuthController extends Controller {
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name']  = $user['last_name'];
             $_SESSION['email']      = $user['email'];
+            // دمج الاسم الأول واسم العائلة وتخزينه كـ user_name
+            $_SESSION['user_name']  = trim($user['first_name'] . ' ' . $user['last_name']);
 
             $timestamp = date('Y-m-d H:i:s');
             setcookie('last_login', $timestamp, time() + (7 * 24 * 60 * 60), '/');
@@ -104,11 +106,11 @@ class AuthController extends Controller {
 
     public function logout(): void {
         unset($_SESSION['user_id']);
+        unset($_SESSION['user_name']);
         unset($_SESSION['first_name']);
         unset($_SESSION['last_name']);
         unset($_SESSION['email']);
         session_destroy();
 
         $this->redirect('/alzikrayat/public/login');
-    }
-}
+    } }

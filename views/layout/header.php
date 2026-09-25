@@ -18,7 +18,7 @@ $base = $GLOBALS['base'] ?? '/alzikrayat/public';
 </head>
 <body class="bg-light">
 
-<!-- Navbar -->
+<<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow-sm">
     <div class="container">
         <a class="navbar-brand fw-bold" href="<?= $base ?>/">
@@ -40,8 +40,14 @@ $base = $GLOBALS['base'] ?? '/alzikrayat/public';
                     </a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-center">
                 <?php if (isset($_SESSION['user_id'])): ?>
+                    <li class="nav-item me-3 text-light">
+                        <i class="bi bi-person-circle text-primary me-1"></i>
+                        <span class="fw-semibold">
+    <?= htmlspecialchars($_SESSION['user_name'] ?? $_SESSION['first_name'] ?? 'User') ?>
+</span>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-light btn-sm px-3 me-2" href="<?= $base ?>/photo/upload">
                             <i class="bi bi-cloud-arrow-up"></i> Upload
